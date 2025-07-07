@@ -1,7 +1,150 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Urbanist:wght@500;700&display=swap');
+
+:root {
+  --neon-blue: #00f5ff;
+  --neon-purple: #a855f7;
+  --neon-pink: #ec4899;
+  --dark-bg: #0a0a0a;
+}
 
 body {
-  @apply bg-zinc-900 text-white font-sans;
+  font-family: 'Urbanist', sans-serif;
+  background: var(--dark-bg);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  letter-spacing: 2px;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+  100% { text-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 30px rgba(0, 245, 255, 0.5); }
+}
+
+p.text-zinc-400 {
+  color: #a1a1aa;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+#uploadForm {
+  background: rgba(39, 39, 42, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+#uploadForm:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+#file {
+  background: rgba(63, 63, 70, 0.3);
+  border: 2px dashed rgba(168, 85, 247, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#file:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  background: rgba(63, 63, 70, 0.5);
+}
+
+#file::file-selector-button {
+  background: linear-gradient(to right, var(--neon-purple), var(--neon-pink));
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-right: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#file::file-selector-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+}
+
+button[type="submit"] {
+  background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
+  border: none;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+}
+
+button[type="submit"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+button[type="submit"]:hover::after {
+  left: 100%;
+}
+
+#result {
+  background: rgba(39, 39, 42, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+  border-radius: 12px;
+}
+
+#link {
+  background: rgba(63, 63, 70, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: white;
+  border-radius: 6px;
+}
+
+#link:focus {
+  outline: none;
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+button.bg-green-600 {
+  background: linear-gradient(to right, #10b981, #00f5ff);
+  transition: all 0.3s ease;
+}
+
+button.bg-green-600:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
 }
