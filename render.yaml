@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: crazybox
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build:css
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    staticPublishPath: public
+    disk:
+      name: crazybox-uploads
+      mountPath: backend/uploads
+      sizeGB: 1
