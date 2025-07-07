@@ -10,35 +10,84 @@
   <style>
     body {
       font-family: 'Space Grotesk', sans-serif;
+      background: radial-gradient(circle at center, #1e1b2b 0%, #0f0c15 100%);
     }
     .wow-border {
-      border: 2px dashed #9333ea;
-      transition: all 0.3s ease-in-out;
+      border: 2px solid transparent;
+      background: linear-gradient(#0f0c15, #0f0c15) padding-box,
+                  linear-gradient(135deg, #9333ea, #3b82f6, #10b981) border-box;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.3);
     }
     .wow-border:hover {
-      background-color: rgba(255, 255, 255, 0.03);
-      border-color: #c084fc;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px -10px rgba(147, 51, 234, 0.5);
+    }
+    .pulse-text {
+      animation: pulse 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(147, 51, 234, 0.7);
+    }
+    @keyframes pulse {
+      0% { opacity: 0.9; }
+      100% { opacity: 1; text-shadow: 0 0 20px rgba(147, 51, 234, 0.9); }
+    }
+    .glow-button {
+      background: linear-gradient(45deg, #9333ea, #7c3aed);
+      box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+    }
+    .glow-button:active {
+      transform: translateY(0);
+    }
+    .glow-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    @keyframes shine {
+      0% { left: -50%; }
+      100% { left: 150%; }
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-white min-h-screen flex flex-col items-center justify-center px-4 py-10">
+<body class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
 
-  <h1 class="text-4xl md:text-5xl font-bold mb-8 text-purple-400 tracking-widest font-orbitron animate-pulse">
-    🎉 CrazyBox
+  <h1 class="text-4xl md:text-5xl font-bold mb-8 text-purple-400 tracking-widest font-orbitron pulse-text">
+    <span class="inline-block transform hover:scale-110 transition">🎉</span> CrazyBox
   </h1>
 
-  <form id="uploadForm" class="w-full max-w-xl bg-zinc-900 p-8 rounded-xl wow-border space-y-5 text-center">
-    <label class="block text-lg text-gray-200">Fichier à uploader :</label>
-    <input type="file" name="file" id="fileInput" class="block w-full text-white border border-zinc-600 rounded p-2 bg-zinc-800" required>
+  <form id="uploadForm" class="w-full max-w-xl bg-zinc-900/50 p-8 rounded-xl wow-border space-y-5 text-center backdrop-blur-sm">
+    <label class="block text-lg text-gray-200 mb-3 font-medium">Fichier à uploader :</label>
+    <input type="file" name="file" id="fileInput" class="block w-full text-white border border-zinc-700 rounded-lg p-3 bg-zinc-800/50 hover:bg-zinc-800/70 transition focus:outline-none focus:ring-2 focus:ring-purple-500">
 
-    <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-md shadow-lg transition-all w-full">
-      🚀 Lancer l’upload
+    <button type="submit" class="glow-button text-white font-semibold px-6 py-3 rounded-lg transition-all w-full mt-6">
+      <span class="relative z-10">🚀 Lancer l'upload</span>
     </button>
 
     <p id="status" class="text-sm mt-4 text-green-400 hidden"></p>
   </form>
 
-  <footer class="mt-10 text-xs text-zinc-500">100% Anonyme. Aucun traçage. Aucun compte requis.</footer>
+  <footer class="mt-10 text-xs text-zinc-400 hover:text-zinc-300 transition">100% Anonyme • Aucun traçage • Aucun compte requis</footer>
 
   <script src="/script.js"></script>
 </body>
