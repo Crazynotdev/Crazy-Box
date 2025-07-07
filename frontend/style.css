@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-zinc-900 text-white font-sans;
+  @apply bg-zinc-950 text-white;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
 }
