@@ -1,11 +1,21 @@
+/* style.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-zinc-950 text-white;
+  @apply text-white;
 }
 
 .font-orbitron {
   font-family: 'Orbitron', sans-serif;
+}
+
+/* Animation for file input when focused */
+input[type="file"]::file-selector-button {
+  @apply bg-purple-600 text-white border-none py-2 px-4 rounded-l-md mr-2 transition;
+}
+
+input[type="file"]::file-selector-button:hover {
+  @apply bg-purple-700;
 }
