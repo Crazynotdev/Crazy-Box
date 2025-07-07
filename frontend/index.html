@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" class="bg-zinc-900 text-white">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CrazyBox – Upload anonyme</title>
-  <link rel="stylesheet" href="/style.css">
+  <title>CrazyBox – Upload</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col justify-center items-center px-4 text-center">
-  <h1 class="text-4xl font-bold mb-6">📦 CrazyBox</h1>
-  <form id="uploadForm" class="w-full max-w-md bg-zinc-800 p-6 rounded-lg border border-zinc-700 space-y-4">
-    <label class="block w-full text-sm font-medium text-gray-200">Choisis ton fichier</label>
-    <input type="file" name="file" id="fileInput" class="block w-full text-white" required>
+<body class="flex flex-col items-center justify-center min-h-screen px-4">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold mb-2">📦 CrazyBox</h1>
+    <p class="text-zinc-400">Upload de fichiers (max 50MB)</p>
+  </div>
 
-    <button type="submit"
-      class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded w-full transition">
+  <form id="uploadForm" class="w-full max-w-md bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+    <input type="file" name="file" id="file" required class="w-full mb-4 text-sm">
+    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
       Uploader
     </button>
-    <p id="status" class="text-sm mt-2 text-green-400 hidden"></p>
   </form>
 
-  <footer class="mt-10 text-xs text-gray-500">Hébergé anonymement. Aucune donnée n’est conservée.</footer>
+  <div id="result" class="mt-6 hidden w-full max-w-md text-center bg-zinc-800 p-4 rounded-lg border border-zinc-700">
+    <p class="mb-2 text-green-400">✅ Fichier uploadé !</p>
+    <input type="text" id="link" readonly class="w-full bg-zinc-700 text-white text-sm px-2 py-1 rounded mb-2">
+    <button onclick="copyLink()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
+      Copier le lien
+    </button>
+  </div>
 
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
